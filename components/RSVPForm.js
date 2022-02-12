@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 
 function RSVP(props) {
+
+
   const [state, setState] = useState({
     submitting: false,
     attending: false,
+    otherAttending: false,
+    anotherGuest: false
   });
 
   //expose the state vars
-  const { submitting, attending } = state;
+  const { submitting, attending, otherAttending, anotherGuest } = state;
 
   const rsvpMe = async (event) => {
     setState({
@@ -75,14 +79,14 @@ function RSVP(props) {
             onClick={() => setState({ ...state, attending: true })}
           >
             <input type="radio" name="radio" />
-            <p>Yes</p>
+            <div className="radioButton">Yes</div>
           </label>
           <label
             className="formControl"
             onClick={() => setState({ ...state, attending: false })}
           >
             <input type="radio" name="radio" />
-            <p>No</p>
+            <div className="radioButton">No</div>
           </label>
         </div>
       </div>
@@ -91,16 +95,76 @@ function RSVP(props) {
           <label>
             <p>Meal Preference</p>
             <select id="name" className="formInput" name="name">
-              <option>Fish</option>
+              <option>Chicken</option>
+              <option>Beef</option>
+              <option>Vegetarian</option>
             </select>
           </label>
         </div>
       )}
-      <div className="cancelContainer">
-        <button type="submit" className="buttonContainer">
-          <span className="buttonText">Submit Report</span>
-        </button>
+      <div className="attending">
+        <p>RSVP for:</p>
+        <div className="attendingRadio">
+          <label
+            className="formControl"
+            onClick={() => setState({ ...state, anotherGuest: false })}
+          >
+            <input type="radio" name="radio" />
+            <div className="radioButton">Just Me</div>
+          </label>
+          <label
+            className="formControl"
+            onClick={() => setState({ ...state, anotherGuest: true })}
+          >
+            <input type="radio" name="radio" />
+            <div className="radioButton">Another Guest</div>
+          </label>
+        </div>
       </div>
+      {anotherGuest && (
+      <>
+        <div className="textForm">
+          <label>
+            <p>Name</p>
+            <input id="name" className="formInput" name="name" type="text" />
+          </label>
+        </div>
+        <div className="attending">
+          <p>Is this person attending?</p>
+          <div className="attendingRadio">
+            <label
+              className="formControl"
+              onClick={() => setState({ ...state, otherAttending: true })}
+            >
+              <input type="radio" name="radio" />
+              <div className="radioButton">Yes</div>
+            </label>
+            <label
+              className="formControl"
+              onClick={() => setState({ ...state, otherAttending: false })}
+            >
+              <input type="radio" name="radio" />
+              <div className="radioButton">No</div>
+            </label>
+          </div>
+        </div>
+      </>
+      )}
+      {otherAttending && anotherGuest && (
+        <div className="textForm">
+          <label>
+            <p>Meal Preference</p>
+            <select id="name" className="formInput" name="name">
+              <option>Chicken</option>
+              <option>Beef</option>
+              <option>Vegetarian</option>
+            </select>
+          </label>
+        </div>
+      )}
+        <button type="submit" className="submitContainer">
+          <span className="buttonText">RSVP</span>
+        </button>
     </form>
   );
 }

@@ -1,6 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 export const HomeStyles = createGlobalStyle`
+body {
+    background-color:black;
+    font-family: 'Oswald', sans-serif;
+}
 .websiteContainer {
         overflow:hidden;
     .bgImage {
@@ -34,6 +38,9 @@ export const HomeStyles = createGlobalStyle`
         align-items:center;
         justify-content:center;
         text-align:center;
+        a {
+            text-decoration:none;
+        }
         h1 {
             font-size:60px;
             color:white;
@@ -115,16 +122,30 @@ export const HomeStyles = createGlobalStyle`
             text-align:left;
             .attendingRadio {
                 display:flex;
+                justify-content:space-between;
+                input {
+                    opacity:0;
+                    position:absolute;
+                }
                 label {
                     display:flex;
                     align-items:center;
-                    margin:0 25px 0 0;
-                    p {
-                        margin:0 0 0 8px;
+                    width:48%;
+                    .radioButton {
+                        text-align:center;
+                        cursor:pointer;
+                        margin:0;
+                        border:1px solid white;
+                        background-color:rgba(255,255,255,0.5);
+                        width:100%;
                     }
                 }
             }
-        }   
+        }
+        .submitContainer {
+            margin:15px 0 0 0;
+            width:100%;
+        }
         
     }
     
