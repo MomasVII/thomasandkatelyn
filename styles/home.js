@@ -113,6 +113,7 @@ body {
                     background-color:rgba(255,255,255,0.5);
                     border:1px solid white;
                     padding:5px;
+                    color:white;
                 }
             }
         }
@@ -138,6 +139,10 @@ body {
                         border:1px solid white;
                         background-color:rgba(255,255,255,0.5);
                         width:100%;
+                    }
+                    .highlightButton {
+                        border:1px solid #6ec3ea;
+                        background-color:rgba(160,169,206,0.5);
                     }
                 }
             }

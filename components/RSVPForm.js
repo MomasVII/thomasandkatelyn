@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion"
+import { stagger, fadeInUp, heightChange } from '../styles/animations'
 
 function RSVP(props) {
 
@@ -79,29 +81,37 @@ function RSVP(props) {
             onClick={() => setState({ ...state, attending: true })}
           >
             <input type="radio" name="radio" />
-            <div className="radioButton">Yes</div>
+            <div className={`radioButton ${attending ? 'highlightButton' : ''}`}>Yes</div>
           </label>
           <label
             className="formControl"
             onClick={() => setState({ ...state, attending: false })}
           >
             <input type="radio" name="radio" />
-            <div className="radioButton">No</div>
+            <div className={`radioButton ${!attending ? 'highlightButton' : ''}`}>No</div>
           </label>
         </div>
       </div>
-      {attending && (
-        <div className="textForm">
-          <label>
-            <p>Meal Preference</p>
-            <select id="name" className="formInput" name="name">
-              <option>Chicken</option>
-              <option>Beef</option>
-              <option>Vegetarian</option>
-            </select>
-          </label>
-        </div>
-      )}
+      <motion.div
+          key={1}
+          exit={{ opacity: 0 }}
+          initial="initial"
+          animate="animate"
+          variants={stagger}
+        >
+        {attending && (
+          <motion.div className="textForm" variants={fadeInUp}>
+            <label>
+              <p>Meal Preference</p>
+              <select id="name" className="formInput" name="name">
+                <option>Chicken</option>
+                <option>Beef</option>
+                <option>Vegetarian</option>
+              </select>
+            </label>
+          </motion.div>
+        )}
+      </motion.div>
       <div className="attending">
         <p>RSVP for:</p>
         <div className="attendingRadio">
@@ -110,17 +120,24 @@ function RSVP(props) {
             onClick={() => setState({ ...state, anotherGuest: false })}
           >
             <input type="radio" name="radio" />
-            <div className="radioButton">Just Me</div>
+            <div className={`radioButton ${!anotherGuest ? 'highlightButton' : ''}`}>Just Me</div>
           </label>
           <label
             className="formControl"
             onClick={() => setState({ ...state, anotherGuest: true })}
           >
             <input type="radio" name="radio" />
-            <div className="radioButton">Another Guest</div>
+            <div className={`radioButton ${anotherGuest ? 'highlightButton' : ''}`}>Another Guest</div>
           </label>
         </div>
       </div>
+      <motion.div
+          key={1}
+          exit={{ opacity: 0 }}
+          initial="initial"
+          animate="animate"
+          variants={stagger}
+        >
       {anotherGuest && (
       <>
         <div className="textForm">
@@ -137,19 +154,20 @@ function RSVP(props) {
               onClick={() => setState({ ...state, otherAttending: true })}
             >
               <input type="radio" name="radio" />
-              <div className="radioButton">Yes</div>
+              <div className={`radioButton ${otherAttending ? 'highlightButton' : ''}`}>Yes</div>
             </label>
             <label
               className="formControl"
               onClick={() => setState({ ...state, otherAttending: false })}
             >
               <input type="radio" name="radio" />
-              <div className="radioButton">No</div>
+              <div className={`radioButton ${!otherAttending ? 'highlightButton' : ''}`}>No</div>
             </label>
           </div>
         </div>
       </>
       )}
+      </motion.div>
       {otherAttending && anotherGuest && (
         <div className="textForm">
           <label>
