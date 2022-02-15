@@ -14,9 +14,15 @@ export default class CustomDocument extends Document {
           />
           <meta name="theme-color" content="#d2263a" />
 
-          <meta property="og:title" content="Betting Mates" />
-          <meta property="og:site_name" content="Betting Mates" />
-          <meta property="og:description" content="Bet With Your Mates" />
+          <meta property="og:title" content="Thomas and Katelyn's Wedding" />
+          <meta
+            property="og:site_name"
+            content="Thomas and Katelyn's Wedding"
+          />
+          <meta
+            property="og:description"
+            content="Thomas and Katelyn's Wedding"
+          />
           <meta property="og:type" content="website" />
           <meta property="og:image" content="/icons/share-image.jpg" />
           <link

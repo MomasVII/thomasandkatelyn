@@ -1,20 +1,19 @@
 import Head from "next/head";
 import React, { useEffect } from "react";
 
-
 //Styles
 import { HomeStyles } from "../styles/home";
 
 import RSVPForm from "../components/RSVPForm";
+import FadeInWhenVisible from "../components/FadeInWhenVisible";
 
 export default function Home() {
-
-  
   useEffect(() => {
-    document.addEventListener('scroll', function (e) {
+    document.addEventListener("scroll", function (e) {
       if (window.pageYOffset > 300) {
         var currScrollPos2 = window.pageYOffset;
-        document.getElementById('backg').style.opacity = -currScrollPos2/500 + 2;
+        document.getElementById("backg").style.opacity =
+          -currScrollPos2 / 500 + 2;
       }
     });
   });
@@ -28,21 +27,31 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="bgImage" id='backg'>
+      <div className="bgImage" id="backg">
         <div className="gradient"></div>
         <img src="/images/Background.jpg" className="bgImg" />
       </div>
       <div className="container-fluid contentContainer">
         <div className="row">
           <div className="col-12">
-            <h1>
-              Thomas Bye
-              <br />&<br />
-              Katelyn Leddy
-            </h1>
-            <hr />
-            <h2>August 26th 2022</h2>
-            <a href="#rsvp"><div className="rsvpButton">RSVP</div></a>
+            <FadeInWhenVisible delay="0">
+              <h1>
+                Thomas Bye
+                <br />&<br />
+                Katelyn Leddy
+              </h1>
+            </FadeInWhenVisible>
+            <FadeInWhenVisible delay="0.3">
+              <hr />
+            </FadeInWhenVisible>
+            <FadeInWhenVisible delay="0.4">
+              <h2>August 26th 2022</h2>
+            </FadeInWhenVisible>
+            <FadeInWhenVisible delay="0.6">
+              <a href="#rsvp">
+                <div className="rsvpButton">RSVP</div>
+              </a>
+            </FadeInWhenVisible>
           </div>
         </div>
       </div>
