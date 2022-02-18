@@ -110,6 +110,7 @@ export const HomeStyles = createGlobalStyle`
                 color:white;
                 font-family: 'Oswald', sans-serif;
                 font-size:18px;
+                max-width:400px;
             }
         }
         .rsvpContainer {

@@ -31,7 +31,7 @@ export default function Home() {
 
       <div className="bgImage" id="backg">
         <div className="gradient"></div>
-        <img src="/images/Background.jpg" className="bgImg" />
+        <img src="/images/Background2.jpg" className="bgImg" />
       </div>
       <div className="container-fluid contentContainer">
         <div className="row">
@@ -72,7 +72,7 @@ export default function Home() {
             </FadeInWhenVisible>
             <FadeInWhenVisible delay="0.4">
               <h2>Wedding</h2>
-              <p>Saturday 26th September, 4pm</p>
+              <p>Saturday 26th August, 4pm</p>
               <p>
                 Our wedding will be held at The Dark Horse Winery in Grand Bend.
               </p>
@@ -80,7 +80,7 @@ export default function Home() {
             </FadeInWhenVisible>
             <FadeInWhenVisible delay="0.6">
               <h2>Farewell Drinks</h2>
-              <p>Sunday 27th September, 12pm</p>
+              <p>Sunday 27th August, 12pm</p>
               <p>
                 We&apos;ll be having farewell drinks for anyone who would like
                 to attend at The Albion Hotel, Bayfield, before we all head off
