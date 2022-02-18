@@ -29,7 +29,7 @@ function RSVP(props) {
       person1Meal:
         attending == 1 ? event.target.person1Meal.value : "Not Attending",
       person2: anotherGuest ? event.target.person2.value : "No Other Guests",
-      person2Meal: anotherGuest
+      person2Meal: otherAttending
         ? event.target.person2Meal.value
         : "Not Attending",
     };
@@ -214,7 +214,12 @@ function RSVP(props) {
                         setState({ ...state, otherAttending: true })
                       }
                     >
-                      <input type="radio" name="person2Attending" required />
+                      <input
+                        type="radio"
+                        name="person2Attending"
+                        required
+                        defaultChecked={otherAttending}
+                      />
                       <div
                         className={`radioButton ${
                           otherAttending ? "highlightButton" : ""
@@ -229,7 +234,11 @@ function RSVP(props) {
                         setState({ ...state, otherAttending: false })
                       }
                     >
-                      <input type="radio" name="person2Attending" />
+                      <input
+                        type="radio"
+                        name="person2Attending"
+                        defaultChecked={!otherAttending}
+                      />
                       <div
                         className={`radioButton ${
                           !otherAttending ? "highlightButton" : ""
