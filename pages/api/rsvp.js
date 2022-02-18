@@ -13,7 +13,7 @@ export default async (req, res) => {
 
   let insertTime = Math.round(Date.now() / 1000);
   const rsvpPerson = await query(
-    prepare`INSERT INTO clubs (name1, attending1, meal1, name2, attending2, meal2, date) VALUES (${req.body.person1}, ${req.body.person1Attending}, ${req.body.person1Meal}, ${req.body.person2}, ${req.body.person2Attending}, ${req.body.person2Meal}, ${insertTime})`
+    prepare`INSERT INTO rsvps (name1, meal1, name2, meal2, date) VALUES (${req.body.person1}, ${req.body.person1Meal}, ${req.body.person2}, ${req.body.person2Meal}, ${insertTime})`
   );
   if (!rsvpPerson.response.boolean) {
     res.statusCode = 200;
@@ -21,7 +21,7 @@ export default async (req, res) => {
       response: {
         boolean: false,
         alert: "danger",
-        message: "Could not create club",
+        message: "Could not RSVP",
       },
       payload: {},
     });

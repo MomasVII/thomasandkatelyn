@@ -24,8 +24,8 @@ function FadeInWhenVisible({ children, delay }) {
         duration: 1,
       }}
       variants={{
-        visible: { opacity: 1, y: -30 },
-        hidden: { opacity: 0, y: 0 },
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 30 },
       }}
     >
       {children}

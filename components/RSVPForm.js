@@ -7,7 +7,7 @@ import { Ring } from "react-awesome-spinners";
 function RSVP(props) {
   const [state, setState] = useState({
     submitting: false,
-    attending: false,
+    attending: 2,
     otherAttending: false,
     anotherGuest: false,
     thanks: false,
@@ -26,13 +26,12 @@ function RSVP(props) {
 
     const data = {
       person1: event.target.person1.value,
-      person1Attending: event.target.person1Attending.value,
-      person1Meal: attending ? event.target.person1Meal.value : "none",
-      person2: anotherGuest ? event.target.person2.value : "none",
-      person2Attending: anotherGuest
-        ? event.target.person2Attending.value
-        : "none",
-      person2Meal: anotherGuest ? event.target.person2Meal.value : "none",
+      person1Meal:
+        attending == 1 ? event.target.person1Meal.value : "Not Attending",
+      person2: anotherGuest ? event.target.person2.value : "No Other Guests",
+      person2Meal: anotherGuest
+        ? event.target.person2Meal.value
+        : "Not Attending",
     };
     try {
       const res = await fetch("/api/rsvp", {
@@ -45,12 +44,16 @@ function RSVP(props) {
 
       const result = await res.json();
 
-      //Bet successfully placed
       if (result.response.boolean) {
         setState({
           ...state,
           submitting: false,
           thanks: true,
+        });
+      } else {
+        setState({
+          ...state,
+          submitting: false,
         });
       }
     } catch (err) {
@@ -58,15 +61,13 @@ function RSVP(props) {
         console.log("[DEBUG] Submit New Bet Form");
       }
     }
-    setState({
-      ...state,
-      submitting: false,
-    });
   };
 
   return (
     <>
-      {submitting ? (
+      {thanks ? (
+        <div className="thanksContainer">Thank you.</div>
+      ) : submitting ? (
         <Ring size={40} color="white" />
       ) : (
         <form onSubmit={rsvpMe} className="myForm">
@@ -79,6 +80,7 @@ function RSVP(props) {
                   className="formInput"
                   name="person1"
                   type="text"
+                  required
                 />
               </label>
             </div>
@@ -89,12 +91,17 @@ function RSVP(props) {
               <div className="attendingRadio">
                 <label
                   className="formControl"
-                  onClick={() => setState({ ...state, attending: true })}
+                  onClick={() => setState({ ...state, attending: 1 })}
                 >
-                  <input type="radio" name="person1Attending" />
+                  <input
+                    type="radio"
+                    name="person1Attending"
+                    value="Attending"
+                    required
+                  />
                   <div
                     className={`radioButton ${
-                      attending ? "highlightButton" : ""
+                      attending == 1 ? "highlightButton" : ""
                     }`}
                   >
                     Yes
@@ -102,12 +109,16 @@ function RSVP(props) {
                 </label>
                 <label
                   className="formControl"
-                  onClick={() => setState({ ...state, attending: false })}
+                  onClick={() => setState({ ...state, attending: 0 })}
                 >
-                  <input type="radio" name="person1Attending" />
+                  <input
+                    type="radio"
+                    name="person1Attending"
+                    value="NotAttending"
+                  />
                   <div
                     className={`radioButton ${
-                      !attending ? "highlightButton" : ""
+                      attending == 0 ? "highlightButton" : ""
                     }`}
                   >
                     No
@@ -123,7 +134,7 @@ function RSVP(props) {
             animate="animate"
             variants={stagger}
           >
-            {attending && (
+            {attending == 1 && (
               <motion.div className="textForm" variants={fadeInUp}>
                 <label>
                   <p>Meal Preference</p>
@@ -140,39 +151,41 @@ function RSVP(props) {
               </motion.div>
             )}
           </motion.div>
-          <div className="attending">
-            <p>RSVP for:</p>
-            <div className="attendingRadio">
-              <label
-                className="formControl"
-                onClick={() => setState({ ...state, anotherGuest: false })}
-              >
-                <input type="radio" name="rsvpFor" />
-                <div
-                  className={`radioButton ${
-                    !anotherGuest ? "highlightButton" : ""
-                  }`}
+          <FadeInWhenVisible delay="0.4">
+            <div className="attending">
+              <p>RSVP for:</p>
+              <div className="attendingRadio">
+                <label
+                  className="formControl"
+                  onClick={() => setState({ ...state, anotherGuest: false })}
                 >
-                  Just Me
-                </div>
-              </label>
-              <label
-                className="formControl"
-                onClick={() => setState({ ...state, anotherGuest: true })}
-              >
-                <input type="radio" name="rsvpFor" />
-                <div
-                  className={`radioButton ${
-                    anotherGuest ? "highlightButton" : ""
-                  }`}
+                  <input type="radio" name="rsvpFor" />
+                  <div
+                    className={`radioButton ${
+                      !anotherGuest ? "highlightButton" : ""
+                    }`}
+                  >
+                    Just Me
+                  </div>
+                </label>
+                <label
+                  className="formControl"
+                  onClick={() => setState({ ...state, anotherGuest: true })}
                 >
-                  Another Guest
-                </div>
-              </label>
+                  <input type="radio" name="rsvpFor" />
+                  <div
+                    className={`radioButton ${
+                      anotherGuest ? "highlightButton" : ""
+                    }`}
+                  >
+                    Another Guest
+                  </div>
+                </label>
+              </div>
             </div>
-          </div>
+          </FadeInWhenVisible>
           <motion.div
-            key={1}
+            key={2}
             exit={{ opacity: 0 }}
             initial="initial"
             animate="animate"
@@ -188,6 +201,7 @@ function RSVP(props) {
                       className="formInput"
                       name="person2"
                       type="text"
+                      required
                     />
                   </label>
                 </div>
@@ -200,7 +214,7 @@ function RSVP(props) {
                         setState({ ...state, otherAttending: true })
                       }
                     >
-                      <input type="radio" name="person2Attending" />
+                      <input type="radio" name="person2Attending" required />
                       <div
                         className={`radioButton ${
                           otherAttending ? "highlightButton" : ""
@@ -230,7 +244,7 @@ function RSVP(props) {
             )}
           </motion.div>
           <motion.div
-            key={1}
+            key={3}
             exit={{ opacity: 0 }}
             initial="initial"
             animate="animate"
@@ -253,11 +267,13 @@ function RSVP(props) {
               </motion.div>
             )}
           </motion.div>
-          <button type="submit" className="submitContainer">
-            <span className="buttonText">RSVP</span>
-          </button>
+          <FadeInWhenVisible delay="0.6">
+            <button type="submit" className="submitContainer">
+              <span className="buttonText">RSVP</span>
+            </button>
+          </FadeInWhenVisible>
         </form>
-      )}{" "}
+      )}
     </>
   );
 }
