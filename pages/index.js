@@ -82,9 +82,9 @@ export default function Home() {
               <h2>Farewell Drinks</h2>
               <p>Sunday 27th September, 12pm</p>
               <p>
-                We'll be having farewell drinks for anyone who would like to
-                attend at The Albion Hotel, Bayfield, before we all head off in
-                our seperate directions.
+                We&apos;ll be having farewell drinks for anyone who would like
+                to attend at The Albion Hotel, Bayfield, before we all head off
+                in our seperate directions.
               </p>
             </FadeInWhenVisible>
           </div>
