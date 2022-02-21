@@ -7,6 +7,59 @@ import { HomeStyles } from "../styles/home";
 import RSVPForm from "../components/RSVPForm";
 import FadeInWhenVisible from "../components/FadeInWhenVisible";
 
+import Faq from "react-faq-component";
+
+const data = {
+  title: "Details",
+  rows: [
+    {
+      title: "WHAT SHOULD WE WEAR?",
+      content: `We invented the ‘celebration’ dress code and we're sticking with it. Wear what makes you happy, or perhaps wear that thing you impulse bought online when you were stuck in your house during the fifth week of lockdown.`,
+    },
+    {
+      title: "CAN WE BUY YOU A GIFT?",
+      content: `We've spent the last year trying to write a tasteful poem about wedding gifts, but couldn't find anything to rhyme with 'we don't need anything but will graciously accept a comfortable two-bedroom home in the Rose Bay area’. Failed rhymes and jokes aside, all we want is for you to celebrate with us because we have waited so long for you to do so.`,
+    },
+    {
+      title: "HOW DO WE GET THERE?",
+      content:
+        "Museum Station is less than a minutes walk from the venue so jump on a train travelling the T2, T3 or T8 lines.",
+    },
+    {
+      title: "WHERE SHOULD WE STAY?",
+      content:
+        "Given the central location of our venue, accommodation options are in abundance. Super close options include Hyde Park Inn, Rydges World Square, Vibe Hotel and Ibis World Square.",
+    },
+    {
+      title: "IS THERE PARKING AT THE VENUE?",
+      content:
+        "There is no parking onsite. The closest car park is a 4-minute walk away at Secure Parking Goulburn Street. A weekend flat rate of $12.00 will apply.",
+    },
+    {
+      title: "ARE WE ALLOWED TO ASK ABOUT THE 'C' WORD?",
+      content:
+        "The virus which must not be named is still causing havoc but we are trying to remain positive that our celebration will go ahead as planned. Should anything change we will get in contact with you.",
+    },
+  ],
+};
+
+const styles = {
+  bgColor: "rgba(0,0,0,0)",
+  titleTextColor: "white",
+  titleTextSize: "32px",
+  rowTitleColor: "white",
+  rowTitleTextSize: "18px",
+  rowContentTextSize: "18px",
+  rowContentColor: "white",
+  arrowColor: "white",
+};
+
+const config = {
+  // animate: true,
+  // arrowIcon: "V",
+  // tabFocus: true
+};
+
 export default function Home() {
   useEffect(() => {
     document.addEventListener("scroll", function (e) {
@@ -61,31 +114,36 @@ export default function Home() {
         <div className="row">
           <div className="col-12">
             <FadeInWhenVisible delay="0">
-              <h1>When</h1>
-              <h1>
-                <span>&</span>
-              </h1>
-              <h1>Where</h1>
+              <h1>Let&apos;s try this again!</h1>
             </FadeInWhenVisible>
             <FadeInWhenVisible delay="0.3">
               <hr className="fatHR" />
             </FadeInWhenVisible>
             <FadeInWhenVisible delay="0.4">
-              <h2>Wedding</h2>
-              <p>Saturday 26th August, 4pm</p>
-              <p>
-                Our wedding will be held at The Dark Horse Winery in Grand Bend.
-              </p>
+              <h2>Our Wedding</h2>
+              <p>Friday 26th August</p>
+              <p>Ceremony 4pm</p>
+              <p>Reception to follow</p>
               <hr className="thinHR" />
             </FadeInWhenVisible>
             <FadeInWhenVisible delay="0.6">
-              <h2>Farewell Drinks</h2>
-              <p>Sunday 27th August, 12pm</p>
-              <p>
-                We&apos;ll be having farewell drinks for anyone who would like
-                to attend at The Albion Hotel, Bayfield, before we all head off
-                in our seperate directions.
-              </p>
+              <h2>Backyard Celebration</h2>
+              <p>Saturday 27th August</p>
+              <p>Starts 1pm</p>
+            </FadeInWhenVisible>
+            <FadeInWhenVisible delay="0.6">
+              <a href="#moreInfo">
+                <div className="rsvpButton">MORE INFO</div>
+              </a>
+            </FadeInWhenVisible>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid moreInfoContainer" id="moreInfo">
+        <div className="row">
+          <div className="col-12">
+            <FadeInWhenVisible delay="0.2">
+              <Faq data={data} styles={styles} config={config} />
             </FadeInWhenVisible>
           </div>
         </div>

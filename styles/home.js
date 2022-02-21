@@ -26,7 +26,7 @@ export const HomeStyles = createGlobalStyle`
     h2 {
         font-family: 'Oswald', sans-serif;
         text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
-        color:white;
+        color:#ffc790;
         font-size:23px;
     }
     .fatHR {
@@ -43,8 +43,27 @@ export const HomeStyles = createGlobalStyle`
         margin:20px auto;
         opacity:1;
     }
+    a {    
+        text-decoration:none;
+    }
+    .rsvpButton {
+        overflow:hidden;
+        font-family: 'Oswald', sans-serif;
+        border:2px solid white;
+        font-size:20px;
+        padding:5px;
+        width:120px;
+        margin:30px auto 0;
+        color:white;
+        transition:0.4s ease all;
+        cursor:pointer;
+        &:hover {
+            background-color:white;
+            color:black;
+        }
+    }
     .websiteContainer {
-            overflow:hidden;
+        overflow:hidden;
         .bgImage {
             z-index:50;
             position:fixed;
@@ -79,21 +98,8 @@ export const HomeStyles = createGlobalStyle`
             a {
                 text-decoration:none;
             }
-            .rsvpButton {
-                overflow:hidden;
-                font-family: 'Oswald', sans-serif;
-                border:2px solid white;
-                font-size:20px;
-                padding:5px;
-                width:120px;
-                margin:30px auto 0;
+            h2 {
                 color:white;
-                transition:0.4s ease all;
-                cursor:pointer;
-                &:hover {
-                    background-color:white;
-                    color:black;
-                }
             }
         }
         .detailsContainer {
@@ -111,6 +117,33 @@ export const HomeStyles = createGlobalStyle`
                 font-family: 'Oswald', sans-serif;
                 font-size:18px;
                 max-width:400px;
+                margin:4px auto;
+            }
+            h1 {
+                font-size:40px;
+            }
+        }
+        .moreInfoContainer {
+            position:relative;
+            z-index:100;
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            .faq-row-wrapper {
+                width:100%;
+                max-width:600px;
+                margin:0 auto;
+                .faq-title {
+                    justify-content: center;
+                    padding-bottom:15px;
+                    h2 {
+                        color:#ffc790;
+                    }
+                }
+                .row-content-text {
+                    padding:10px 0 20px 0 !important;
+                }
             }
         }
         .rsvpContainer {
@@ -143,6 +176,11 @@ export const HomeStyles = createGlobalStyle`
                         background-color:rgba(255,255,255,0.5);
                         border:1px solid white;
                         padding:5px;
+                        transition:0.4s ease all;
+                        &:hover {
+                            border:1px solid white;
+                            box-shadow:0 0 10px rgba(255,255,255,0.5);
+                        }
                     }
                     select {
                         width:100%;
@@ -150,6 +188,11 @@ export const HomeStyles = createGlobalStyle`
                         border:1px solid white;
                         padding:5px;
                         color:white;
+                        transition:0.4s ease all;
+                        &:hover {
+                            border:1px solid white;
+                            box-shadow:0 0 10px rgba(255,255,255,0.5);
+                        }
                     }
                     select * {
                         border-radius: 15px;
@@ -183,23 +226,35 @@ export const HomeStyles = createGlobalStyle`
                             &:hover {
                                 background-color:rgba(255,255,255,1);
                                 color:black;
+                                border:1px solid white;
+                                box-shadow:0 0 10px rgba(255,255,255,0.5);
                             }
                         }
                         .highlightButton {
-                            border:1px solid #6ec3ea;background: rgb(96,206,255);
-                            background: linear-gradient(132deg, rgba(96,206,255,1) 0%, rgba(105,173,255,1) 19%, rgba(0,124,164,1) 100%);
+                            border:1px solid #ffc790;
+                            background: rgb(255 199 144);
+                            background: linear-gradient(132deg,rgb(255 199 144) 0%,rgb(190 128 67) 19%,rgb(74 56 46) 100%);
+                            &:hover {
+                                color:white;
+                                border:1px solid white;
+                                box-shadow:0 0 10px rgba(255,255,255,0.5);
+                            }
                         }
                     }
                 }
             }
             .submitContainer {
-                margin:15px 0 0 0;
+                margin:30px 0 0 0;
                 width:100%;
-                border:1px solid #6ec3ea;
+                border:1px solid #ffc790;
                 padding:10px 0;
-                background: rgb(96,206,255);
-                background: linear-gradient(132deg, rgba(96,206,255,1) 0%, rgba(105,173,255,1) 19%, rgba(0,62,82,1) 100%);
+                background: linear-gradient(132deg,rgb(255 199 144) 0%,rgb(190 128 67) 19%,rgb(74 56 46) 100%);
                 color:white;
+                transition:0.4s ease all;
+                &:hover {
+                    border:1px solid white;
+                    box-shadow:0 0 10px rgba(255,255,255,0.5);
+                }
             }
             
         }
