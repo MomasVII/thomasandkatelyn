@@ -10,35 +10,39 @@ import FadeInWhenVisible from "../components/FadeInWhenVisible";
 import Faq from "react-faq-component";
 
 const data = {
-  title: "Details",
+  title: "The Fine Print",
   rows: [
     {
-      title: "WHAT SHOULD WE WEAR?",
-      content: `We invented the ‘celebration’ dress code and we're sticking with it. Wear what makes you happy, or perhaps wear that thing you impulse bought online when you were stuck in your house during the fifth week of lockdown.`,
+      title: "What should we wear?",
+      content: `The dress code is semi-formal but wear what makes you happy!`,
     },
     {
-      title: "CAN WE BUY YOU A GIFT?",
-      content: `We've spent the last year trying to write a tasteful poem about wedding gifts, but couldn't find anything to rhyme with 'we don't need anything but will graciously accept a comfortable two-bedroom home in the Rose Bay area’. Failed rhymes and jokes aside, all we want is for you to celebrate with us because we have waited so long for you to do so.`,
+      title: "Can we buy you a gift?",
+      content: `After two years of rescheduling and border closures, your attendance at our wedding is all we really want. We know times have been tough and some of you have travelled across the world to help us celebrate so gifts are not required or expected. However, if you wish to follow tradition and give as well, please donate to our wishing well that will be used to help us establish ourselves in our new home. `,
     },
     {
-      title: "HOW DO WE GET THERE?",
+      title: "How do we get there?",
       content:
-        "Museum Station is less than a minutes walk from the venue so jump on a train travelling the T2, T3 or T8 lines.",
+        `<p>Travel to Grandbend/Bayfield is only possible by car. For those travelling from overseas you can book a car hire from <a href="https://www.enterprise.com/en/home.html" target="_blank">Enterprise</a> and select Toronto Airport as your pickup/return location.</p><p>For our Aussie family and friends, you can also book a Airport shuttle with <a href="https://shorelinetransfer.ca/" target="_blank">Shoreline Transfer Service</a> if driving on the other side of the road makes you nervous.</p><p>The day of the wedding we have organised a company to transport guests to and from the venue. Below are a list of pick up and drop off locations that will be used on the day.</p><ol><li>The Albion Hotel Bayfield</li><li>The Colonial Hotel Grandbend</li></ol>`,
     },
     {
-      title: "WHERE SHOULD WE STAY?",
+      title: "Where should we stay?",
       content:
-        "Given the central location of our venue, accommodation options are in abundance. Super close options include Hyde Park Inn, Rydges World Square, Vibe Hotel and Ibis World Square.",
+        `<p>As August is a peak tourist season in Grandbend we strongly recommend booking your accommodation ASAP. Below are some recommendations but be sure to check cancellation policies before booking just in case.</p><p>Grandbend</p><p><a href="https://oakwoodresort.ca/" target="_blank">Oakwood Resort</a><br /><a href="https://www.booking.com/hotel/ca/colonial-amp-suites.en-gb.html" target="_blank">Colonial Hotel</a></p><p>Bayfield</p><p><a href="https://lakehouseofbayfield.com/" target="_blank">The Lake House</a><br /><a href="http://www.littleinn.com/" target="_blank">The Little Inn</a></p><p>There are also many excellent options available via AirBNB</p>`,
     },
     {
-      title: "IS THERE PARKING AT THE VENUE?",
+      title: "Is there parking at the venue?",
       content:
-        "There is no parking onsite. The closest car park is a 4-minute walk away at Secure Parking Goulburn Street. A weekend flat rate of $12.00 will apply.",
+        "Yes, there is plenty of parking available for those who wish to drive.",
     },
     {
-      title: "ARE WE ALLOWED TO ASK ABOUT THE 'C' WORD?",
+      title: "Backyard recovery",
+      content: `We have made you travel all this way and we want to say thank you with a backyard celebration at Rick and Carol’s house. Food and drinks will be provided along with acoustic music and lawn games. We know that this is the only time all our loved ones will be in the same place so we want to cherish every moment we can.  `,
+    },
+    {
+      title: "Are we allowed to ask about the 'C' word?",
       content:
-        "The virus which must not be named is still causing havoc but we are trying to remain positive that our celebration will go ahead as planned. Should anything change we will get in contact with you.",
+        "No you Aussies… not that one! The virus which shall not be named is almost gone but still lingering. We are hopeful that our celebration will go ahead this time around. Should anything change we will update this website and get in contact with you.",
     },
   ],
 };
@@ -63,12 +67,12 @@ const config = {
 export default function Home() {
   useEffect(() => {
     document.addEventListener("scroll", function (e) {
-      if (window.pageYOffset > 300 && window.pageYOffset < 800) {
+      if (window.pageYOffset > 0 && window.pageYOffset < 800) {
         var currScrollPos2 = window.pageYOffset;
         document.getElementById("backg").style.opacity =
-          -currScrollPos2 / 500 + 2;
+          -currScrollPos2 / 420 + 2;
       } else if (window.pageYOffset > 800) {
-        document.getElementById("backg").style.opacity = -800 / 500 + 2;
+        document.getElementById("backg").style.opacity = -800 / 420 + 2;
       }
     });
   });
@@ -84,20 +88,17 @@ export default function Home() {
 
       <div className="bgImage" id="backg">
         <div className="gradient"></div>
-        <img src="/images/Background2.jpg" className="bgImg" />
+        <img src="/images/Background3.jpg" className="bgImg" />
       </div>
       <div className="container-fluid contentContainer">
         <div className="row">
           <div className="col-12">
             <FadeInWhenVisible delay="0">
-              <h1>Thomas Bye</h1>
+              <h1>Thomas</h1>
               <h1>
-                <span>&</span>
+                <span></span><span>&</span><span></span>
               </h1>
-              <h1>Katelyn Leddy</h1>
-            </FadeInWhenVisible>
-            <FadeInWhenVisible delay="0.3">
-              <hr className="fatHR" />
+              <h1>Katelyn</h1>
             </FadeInWhenVisible>
             <FadeInWhenVisible delay="0.4">
               <h2>August 26th 2022</h2>
@@ -131,11 +132,6 @@ export default function Home() {
               <p>Saturday 27th August</p>
               <p>Starts 1pm</p>
             </FadeInWhenVisible>
-            <FadeInWhenVisible delay="0.6">
-              <a href="#moreInfo">
-                <div className="rsvpButton">MORE INFO</div>
-              </a>
-            </FadeInWhenVisible>
           </div>
         </div>
       </div>
@@ -152,7 +148,10 @@ export default function Home() {
         <div className="row">
           <div className="col-12">
             <FadeInWhenVisible delay="0">
-              <h1>RSVP</h1>
+              <h1>Kindly RSVP</h1>
+            </FadeInWhenVisible>
+            <FadeInWhenVisible delay="0.20">
+              <p className="rsvpBy">Your reply is appreciated by Friday, July 1st</p>
             </FadeInWhenVisible>
             <FadeInWhenVisible delay="0.3">
               <hr className="fatHR" />

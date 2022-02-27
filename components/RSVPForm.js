@@ -32,6 +32,7 @@ function RSVP(props) {
       person2Meal: otherAttending
         ? event.target.person2Meal.value
         : "Not Attending",
+      dietary: event.target.dietary.value,
     };
     try {
       const res = await fetch("/api/rsvp", {
@@ -66,9 +67,9 @@ function RSVP(props) {
   return (
     <>
       {thanks ? (
-        <div className="thanksContainer">Thank you.</div>
+        <div className="thanksContainer">Cheers legends.</div>
       ) : submitting ? (
-        <Ring size={40} color="white" />
+        <div className="loader"><Ring size={40} color="white" /></div>
       ) : (
         <form onSubmit={rsvpMe} className="myForm">
           <FadeInWhenVisible delay="0">
@@ -87,7 +88,7 @@ function RSVP(props) {
           </FadeInWhenVisible>
           <FadeInWhenVisible delay="0.2">
             <div className="attending">
-              <p>Are you attending?</p>
+              <p>Will we be celebrating with you?</p>
               <div className="attendingRadio">
                 <label
                   className="formControl"
@@ -104,7 +105,7 @@ function RSVP(props) {
                       attending == 1 ? "highlightButton" : ""
                     }`}
                   >
-                    Yes
+                    Yes, can&apos;t wait!
                   </div>
                 </label>
                 <label
@@ -121,7 +122,7 @@ function RSVP(props) {
                       attending == 0 ? "highlightButton" : ""
                     }`}
                   >
-                    No
+                    Sorry, celebrating in spirit 
                   </div>
                 </label>
               </div>
@@ -145,6 +146,7 @@ function RSVP(props) {
                   >
                     <option value="Chicken">Chicken</option>
                     <option value="Beef">Beef</option>
+                    <option value="Vegetarian">Fish</option>
                     <option value="Vegetarian">Vegetarian</option>
                   </select>
                 </label>
@@ -206,7 +208,7 @@ function RSVP(props) {
                   </label>
                 </div>
                 <div className="attending">
-                  <p>Is this person attending?</p>
+                  <p>Will we be celebrating with you?</p>
                   <div className="attendingRadio">
                     <label
                       className="formControl"
@@ -225,7 +227,7 @@ function RSVP(props) {
                           otherAttending ? "highlightButton" : ""
                         }`}
                       >
-                        Yes
+                        Yes, can&apos;t wait!
                       </div>
                     </label>
                     <label
@@ -244,7 +246,7 @@ function RSVP(props) {
                           !otherAttending ? "highlightButton" : ""
                         }`}
                       >
-                        No
+                        Sorry, celebrating in spirit
                       </div>
                     </label>
                   </div>
@@ -270,12 +272,26 @@ function RSVP(props) {
                   >
                     <option value="Chicken">Chicken</option>
                     <option value="Beef">Beef</option>
+                    <option value="Vegetarian">Fish</option>
                     <option value="Vegetarian">Vegetarian</option>
                   </select>
                 </label>
               </motion.div>
             )}
           </motion.div>
+          <FadeInWhenVisible delay="0">
+            <div className="textForm">
+              <label>
+                <p>Dietary Requirements</p>
+                <input
+                  id="dietary"
+                  className="formInput"
+                  name="dietary"
+                  type="text"
+                />
+              </label>
+            </div>
+          </FadeInWhenVisible>
           <FadeInWhenVisible delay="0.6">
             <button type="submit" className="submitContainer">
               <span className="buttonText">RSVP</span>

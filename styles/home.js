@@ -2,38 +2,61 @@ import { createGlobalStyle } from "styled-components";
 
 export const HomeStyles = createGlobalStyle`
     body {
-        background-color:black;
-        font-family: 'Oswald', sans-serif;
+        background-color:#cab6ac;
+        font-family: 'Libre Franklin', sans-serif;
+    }
+    a {
+        color:#013550;
+        transition:0.4s ease all;
+        &:hover {
+            color:white;
+        }
     }
     h1 {
         font-size:60px;
         color:white;
         margin:0;
-        font-family: 'Cinzel', serif;
+        font-family: 'Libre Baskerville', serif;
         text-shadow: 3px 3px 4px rgba(0,0,0,0.6);
         @media (max-width: 700px) {
             font-size:45px;
         }
         &:nth-of-type(2) {
             line-height:30px;
-            margin-bottom: 7px;
+            margin: 7px 0;
+            display: flex;
+            align-items: center;
         }
         span {
-            font-size:24px;
+            font-size:25px;
             line-height:22px;
+            &:first-of-type {
+                width:170px;
+                height:2px;
+                display:block;
+                margin-right:15px;
+                background-color:white;
+            }
+            &:last-of-type {
+                width:170px;
+                height:2px;
+                display:block;
+                margin-left:15px;
+                background-color:white;
+            }
         }
     }
     h2 {
-        font-family: 'Oswald', sans-serif;
-        text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
-        color:#ffc790;
-        font-size:23px;
+        font-family: 'Libre Franklin', sans-serif;
+        color:#013550;
+        font-size:30px;
     }
     .fatHR {
         border: 2px solid white;
         width:100px;
         box-shadow: 3px 3px 4px rgba(0,0,0,0.6);
         margin:20px auto;
+        background-color:white;
         opacity:1;
     }
     .thinHR {
@@ -48,7 +71,7 @@ export const HomeStyles = createGlobalStyle`
     }
     .rsvpButton {
         overflow:hidden;
-        font-family: 'Oswald', sans-serif;
+        font-family: 'Libre Franklin', sans-serif;
         border:2px solid white;
         font-size:20px;
         padding:5px;
@@ -100,6 +123,7 @@ export const HomeStyles = createGlobalStyle`
             }
             h2 {
                 color:white;
+                margin-top:15px;
             }
         }
         .detailsContainer {
@@ -113,8 +137,8 @@ export const HomeStyles = createGlobalStyle`
             text-align:center;
             padding:0 20px;
             p {
-                color:white;
-                font-family: 'Oswald', sans-serif;
+                color:#013550;
+                font-family: 'Libre Franklin', sans-serif;
                 font-size:18px;
                 max-width:400px;
                 margin:4px auto;
@@ -138,30 +162,43 @@ export const HomeStyles = createGlobalStyle`
                     justify-content: center;
                     padding-bottom:15px;
                     h2 {
-                        color:#ffc790;
+                        font-family: 'Libre Baskerville', serif;
+                        color:white;
+                        font-size: 40px;
+                        text-shadow: 3px 3px 4px rgb(0 0 0 / 60%);
                     }
                 }
                 .row-content-text {
                     padding:10px 0 20px 0 !important;
+                    color:#013550 !important;
+                }
+                .row-title-text {
+                    color:#013550 !important;
                 }
             }
         }
         .rsvpContainer {
             position:relative;
             z-index:100;
-            min-width:100vw;
             min-height:100vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            text-align:center;
+            padding:100px 0;
+            h1, .rsvpBy {
+                text-align:center;
+            }
+            .rsvpBy {
+                color:#013550;
+                margin-top:10px;
+            }
         }
 
         .myForm {
-            width:300px;
+            width:100%;
+            max-width:600px;
+            margin:0 auto;
+            padding:0 5%;
             p {   
-                text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
-                margin:0 0 5px 0;
+                color:#013550;
+                margin:0 0 10px 0;
             }
             .textForm {
                 label {
@@ -171,28 +208,22 @@ export const HomeStyles = createGlobalStyle`
                     align-items:flex-start;
                     color:white;
                     input[type="text"] {
-                        color:white;
+                        color:#013550;
                         width:100%;
-                        background-color:rgba(255,255,255,0.5);
-                        border:1px solid white;
+                        background-color:rgba(255,255,255,0);
+                        border:none;
+                        border-bottom:2px solid white;
                         padding:5px;
                         transition:0.4s ease all;
-                        &:hover {
-                            border:1px solid white;
-                            box-shadow:0 0 10px rgba(255,255,255,0.5);
-                        }
                     }
                     select {
                         width:100%;
-                        background-color:rgba(255,255,255,0.5);
-                        border:1px solid white;
+                        background-color:rgba(255,255,255,0);
+                        border:none;
+                        border-bottom:2px solid white;
                         padding:5px;
-                        color:white;
+                        color:#013550;
                         transition:0.4s ease all;
-                        &:hover {
-                            border:1px solid white;
-                            box-shadow:0 0 10px rgba(255,255,255,0.5);
-                        }
                     }
                     select * {
                         border-radius: 15px;
@@ -201,7 +232,7 @@ export const HomeStyles = createGlobalStyle`
                 }
             }
             .attending {
-                margin:20px 0 15px 0;
+                margin:25px 0 25px 0;
                 color:white;
                 text-align:left;
                 .attendingRadio {
@@ -220,22 +251,23 @@ export const HomeStyles = createGlobalStyle`
                             cursor:pointer;
                             margin:0;
                             border:1px solid white;
+                            padding:4px 0;
                             background-color:rgba(255,255,255,0.5);
                             width:100%;
                             transition:0.4s ease all;
+                            color:black;
                             &:hover {
                                 background-color:rgba(255,255,255,1);
-                                color:black;
                                 border:1px solid white;
                                 box-shadow:0 0 10px rgba(255,255,255,0.5);
                             }
                         }
                         .highlightButton {
-                            border:1px solid #ffc790;
-                            background: rgb(255 199 144);
-                            background: linear-gradient(132deg,rgb(255 199 144) 0%,rgb(190 128 67) 19%,rgb(74 56 46) 100%);
+                            border:1px solid #013550;
+                            background: #013550;
+                            color:white;
+                            /*background: linear-gradient(132deg,rgb(255 199 144) 0%,rgb(190 128 67) 19%,rgb(74 56 46) 100%);*/
                             &:hover {
-                                color:white;
                                 border:1px solid white;
                                 box-shadow:0 0 10px rgba(255,255,255,0.5);
                             }
@@ -246,9 +278,9 @@ export const HomeStyles = createGlobalStyle`
             .submitContainer {
                 margin:30px 0 0 0;
                 width:100%;
-                border:1px solid #ffc790;
+                border:1px solid #013550;
                 padding:10px 0;
-                background: linear-gradient(132deg,rgb(255 199 144) 0%,rgb(190 128 67) 19%,rgb(74 56 46) 100%);
+                background: #013550;
                 color:white;
                 transition:0.4s ease all;
                 &:hover {
@@ -259,8 +291,13 @@ export const HomeStyles = createGlobalStyle`
             
         }
         .thanksContainer {
-            color:#82ff82;
+            color:#013550;
             font-size:36px;
+            text-align:center;
+        }
+        .loader {
+            display:flex;
+            justify-content:center;
         }
     }
 `;
