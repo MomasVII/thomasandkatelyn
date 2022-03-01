@@ -13,7 +13,7 @@ export default async (req, res) => {
 
   let insertTime = Math.round(Date.now() / 1000);
   const rsvpPerson = await query(
-    prepare`INSERT INTO rsvps (name1, meal1, name2, meal2, dietary, date) VALUES (${req.body.person1}, ${req.body.person1Meal}, ${req.body.person2}, ${req.body.person2Meal}, ${dietary}, ${insertTime})`
+    prepare`INSERT INTO rsvps (name1, meal1, name2, meal2, dietary, date) VALUES (${req.body.person1}, ${req.body.person1Meal}, ${req.body.person2}, ${req.body.person2Meal}, ${req.body.dietary}, ${insertTime})`
   );
   if (!rsvpPerson.response.boolean) {
     res.statusCode = 200;
