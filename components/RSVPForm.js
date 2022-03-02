@@ -27,11 +27,13 @@ function RSVP(props) {
     const data = {
       person1: event.target.person1.value,
       person1Meal:
-        attending == 1 ? event.target.person1Meal.value : "Not Attending",
+        attending == 1
+          ? event.target.person1Meal.value + " is Attending"
+          : event.target.person1Meal.value + " is not Attending",
       person2: anotherGuest ? event.target.person2.value : "No Other Guests",
       person2Meal: otherAttending
         ? event.target.person2Meal.value
-        : "Not Attending",
+        : event.target.person2.value + " is not Attending",
       dietary: event.target.dietary.value,
     };
     try {
@@ -69,7 +71,9 @@ function RSVP(props) {
       {thanks ? (
         <div className="thanksContainer">Cheers legends.</div>
       ) : submitting ? (
-        <div className="loader"><Ring size={40} color="white" /></div>
+        <div className="loader">
+          <Ring size={40} color="white" />
+        </div>
       ) : (
         <form onSubmit={rsvpMe} className="myForm">
           <FadeInWhenVisible delay="0">
@@ -122,7 +126,7 @@ function RSVP(props) {
                       attending == 0 ? "highlightButton" : ""
                     }`}
                   >
-                    Sorry, celebrating in spirit 
+                    Sorry, celebrating in spirit
                   </div>
                 </label>
               </div>
