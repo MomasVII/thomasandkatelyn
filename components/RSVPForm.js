@@ -33,7 +33,7 @@ function RSVP(props) {
       person2: anotherGuest ? event.target.person2.value : "No Other Guests",
       person2Meal: otherAttending
         ? event.target.person2Meal.value
-        : event.target.person2.value + " is not Attending",
+        : "Is not Attending",
       dietary: event.target.dietary.value,
     };
     try {
